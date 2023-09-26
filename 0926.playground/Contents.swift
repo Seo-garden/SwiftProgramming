@@ -29,7 +29,7 @@ var younger: Student = Student(koreanAge: 16)
 print(younger)
 younger = Student(bornAt: 1998, currentYear: 2016)
 print(younger)
-11-9
+//11-9
 class Person{
     let name: String
     var age: Int?
@@ -70,7 +70,7 @@ if let person: Person = eric {
 }else {
     print("Person wasn't initialized")
 }
-11-12
+//11-12
 struct Student {
     var name: String?
     var number: Int?
@@ -88,7 +88,7 @@ class SchoolClass {
 }
 let myClass: SchoolClass = SchoolClass()
 print(myClass.students.count)
-11-13
+//11-13
 class SomeClass {
     deinit{
         print("디이니셜라이저로 인한 해제")
@@ -96,7 +96,7 @@ class SomeClass {
 }
 var instance: SomeClass? = SomeClass()
 instance = nil
-11-14
+//11-14
 class FileManager {
     var fileName: String
     init(fileName: String){
@@ -129,10 +129,3 @@ if let manager: FileManager = fileManager {
     
 }
 fileManager = nil
-//12-2
-open class NSString: NSObject, NSCopying, NSMutableCopying, NSSecureCoding {
-    open var length: Int {get}
-    open func character(at index: Int) -> unichar
-    public init()
-    public init?(coder aDecoder: NSCoder)
-}
