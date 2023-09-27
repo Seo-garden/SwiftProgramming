@@ -2,66 +2,66 @@ import UIKit
 import Foundation
 import SwiftUI
 
-//public struct SomeType {
-//    private var privateVariable = 0
-//    fileprivate var fileprivateVariable = 0
-//}
-//
-//extension SomeType {
-//    public func publicMethod(){
-//        print("\(self.privateVariable), \(self.fileprivateVariable)")
-//    }
-//    fileprivate func fileprivateMethod(){
-//        print("\(self.privateVariable), \(self.fileprivateVariable)")
-//    }
-//    private func privateMethod(){
-//        print("\(self.privateVariable), \(self.fileprivateVariable)")
-//    }
-//}
-//struct AnotherType {
-//    var someInstance: SomeType = SomeType()
-//    
-//    mutating func someMethod() {
-//        self.someInstance.publicMethod()
-//        
-//        self.someInstance.fileprivateVariable = 100
-//        self.someInstance.fileprivateMethod()
-//    }
-//}
+public struct SomeType {
+    private var privateVariable = 0
+    fileprivate var fileprivateVariable = 0
+}
+
+extension SomeType {
+    public func publicMethod(){
+        print("\(self.privateVariable), \(self.fileprivateVariable)")
+    }
+    fileprivate func fileprivateMethod(){
+        print("\(self.privateVariable), \(self.fileprivateVariable)")
+    }
+    private func privateMethod(){
+        print("\(self.privateVariable), \(self.fileprivateVariable)")
+    }
+}
+struct AnotherType {
+    var someInstance: SomeType = SomeType()
+    
+    mutating func someMethod() {
+        self.someInstance.publicMethod()
+        
+        self.someInstance.fileprivateVariable = 100
+        self.someInstance.fileprivateMethod()
+    }
+}
 //12-7
-//private typealias PointValue: Int
-//
-//enum Point: PointValue {
-//    case x, y
-//}
+private typealias PointValue: Int
+
+enum Point: PointValue {
+    case x, y
+}
 //12-8
-//public struct SomeType {
-//    private var privateVariable = 0
-//    fileprivate var fileprivateVariable = 0
-//}
-//extension SomeType {
-//    public func publicMethod(){
-//        print("\(self.privateVariable), \(self.fileprivateVariable)1")
-//    }
-//    private func privateMethod(){
-//        print("\(self.privateVariable), \(self.fileprivateVariable)2")
-//    }
-//    fileprivate func fileprivateMethod(){
-//        print("\(self.privateVariable), \(self.fileprivateVariable)3")
-//    }
-//}
-//
-//struct AnotherType {
-//    var someInstance: SomeType = SomeType()
-//    
-//    mutating func someMethod(){
-//        self.someInstance.publicMethod()
-//        self.someInstance.fileprivateVariable = 100
-//        self.someInstance.fileprivateMethod()
-//    }
-//}
-//var anotherInstance = AnotherType()
-//anotherInstance.someMethod()
+public struct SomeType {
+    private var privateVariable = 0
+    fileprivate var fileprivateVariable = 0
+}
+extension SomeType {
+    public func publicMethod(){
+        print("\(self.privateVariable), \(self.fileprivateVariable)1")
+    }
+    private func privateMethod(){
+        print("\(self.privateVariable), \(self.fileprivateVariable)2")
+    }
+    fileprivate func fileprivateMethod(){
+        print("\(self.privateVariable), \(self.fileprivateVariable)3")
+    }
+}
+
+struct AnotherType {
+    var someInstance: SomeType = SomeType()
+    
+    mutating func someMethod(){
+        self.someInstance.publicMethod()
+        self.someInstance.fileprivateVariable = 100
+        self.someInstance.fileprivateMethod()
+    }
+}
+var anotherInstance = AnotherType()
+anotherInstance.someMethod()
 public struct SomeType {
     private var count: Int = 0
     
