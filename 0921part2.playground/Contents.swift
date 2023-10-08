@@ -40,7 +40,7 @@ class Person {
 var yagom: Person? = Person()
 
 yagom = nil
-9-6 정리하면 값 타입의 데이터를 함수의 전달인자로 전달하면 메모리의 전달인자를 위한 인스턴스가 새로 생성. 생성된 새 인스턴스에는 전달하려는 값이 복사되어 들어감. 반면 참조 타입으
+//9-6 정리하면 값 타입의 데이터를 함수의 전달인자로 전달하면 메모리의 전달인자를 위한 인스턴스가 새로 생성. 생성된 새 인스턴스에는 전달하려는 값이 복사되어 들어감. 반면 참조 타입으
 struct BasicInformation{
     let name: String
     var age: Int
