@@ -1,38 +1,38 @@
 import UIKit
 import Foundation
 //17-3
-//struct Student {
-//    var name: String
-//    var number: Int
-//}
-//class School {
-//    var number: Int = 0
-//    var students: [Student] = [Student]()
-//    
-//    func addStudent(name: String) {
-//        let student: Student = Student(name: name, number: self.number)
-//        self.students.append(student)
-//        self.number += 1
-//    }
-//    func addStudents(names: String...){
-//        for name in names {
-//            self.addStudent(name: name)
-//        }
-//    }
-//    subscript(index: Int = 0) -> Student? {
-//        if index < self.number {
-//            return self.students[index]
-//        }
-//        return nil
-//    }
-//}
-//let highSchool: School = School()
-//
-//highSchool.addStudents(names: "MiJeong", "JuHyun", "JiYoung", "Seonguk", "Moonduk")
-//let aStudent: Student? = highSchool[1]
-//print("\(aStudent?.number) \(aStudent?.name)")
-//Optional("JuHyun")
-//print(highSchool[0]?.name)
+struct Student {
+    var name: String
+    var number: Int
+}
+class School {
+    var number: Int = 0
+    var students: [Student] = [Student]()
+    
+    func addStudent(name: String) {
+        let student: Student = Student(name: name, number: self.number)
+        self.students.append(student)
+        self.number += 1
+    }
+    func addStudents(names: String...){
+        for name in names {
+            self.addStudent(name: name)
+        }
+    }
+    subscript(index: Int = 0) -> Student? {
+        if index < self.number {
+            return self.students[index]
+        }
+        return nil
+    }
+}
+let highSchool: School = School()
+
+highSchool.addStudents(names: "MiJeong", "JuHyun", "JiYoung", "Seonguk", "Moonduk")
+let aStudent: Student? = highSchool[1]
+print("\(aStudent?.number) \(aStudent?.name)")
+Optional("JuHyun")
+print(highSchool[0]?.name)
 //17-3
 struct Student {
     var name: String
@@ -113,3 +113,14 @@ print(highSchool["MangGu"])
 print(highSchool["SeongUk", 3])
 print(highSchool["HeeJin", 3])
 
+enum School1 : Int {
+    case elementary = 1, middle, high, university
+    
+    static subscript(level : Int) -> School1? {
+        return Self(rawValue: level)
+    }
+}
+
+let school: School1? = School1[2]
+
+print(school)
