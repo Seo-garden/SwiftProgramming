@@ -11,31 +11,31 @@ protocol AnotherProtocol {
     static var anotherTypeProperty: Int {get}
 }
 //20-4
-//protocol Sendable {
-//    var from: String {get}
-//    var to: String {get}
-//}
-//
-//class Message: Sendable {
-//    var sender: String
-//    var from: String {
-//        return self.sender
-//    }
-//    var to: String
-//    init(sender:String, receiver: String){
-//        self.sender = sender
-//        self.to = receiver
-//    }
-//}
-//class Mail : Sendable {
-//    var from: String
-//    var to: String
-//    
-//    init(sender:String, receiver: String){
-//        self.from = sender
-//        self.to = receiver
-//    }
-//}
+protocol Sendable {
+    var from: String {get}
+    var to: String {get}
+}
+
+class Message: Sendable {
+    var sender: String
+    var from: String {
+        return self.sender
+    }
+    var to: String
+    init(sender:String, receiver: String){
+        self.sender = sender
+        self.to = receiver
+    }
+}
+class Mail : Sendable {
+    var from: String
+    var to: String
+    
+    init(sender:String, receiver: String){
+        self.from = sender
+        self.to = receiver
+    }
+}
 //20-5
 // 무언가를 수신받을 수 있는 기능
 protocol Receiveable {
@@ -149,7 +149,7 @@ class Person : Named {
         self.name = name
     }
 }
-//20-11
+////20-10
 class School {
     var name : String
     init(name: String){
@@ -161,3 +161,28 @@ class MiddleSchool : School, Named {        //상속와 프로토콜의 채택�
         super.init(name: name)
     }
 }
+//20-11
+protocol Named {
+    var name : String { get }
+    init?(name: String)
+}
+struct Animal : Named {
+    var name: String
+    init!(name: String){
+        self.name = name
+    }
+}
+struct Pet : Named {
+    var name: String
+    required init(name: String) {
+        self.name = name
+    }
+}
+
+class School : Named {
+    var name : String
+    required init?(name: String){
+        self.name = name
+    }
+}
+
