@@ -131,3 +131,33 @@ Message.isSendableInstance(myPhoneMessage)
 Message.isSendableInstance(yourPhoneMessage)
 Mail.isSendableInstance(myPhoneMessage)
 Mail.isSendableInstance(myMail)
+//20-7
+protocol Named {
+    var name: String {get}
+    init(name: String)
+}
+struct Pet : Named {
+    var name : String
+    init(name: String){
+        self.name = name
+    }
+}
+
+class Person : Named {
+    var name: String
+    required init(name: String){
+        self.name = name
+    }
+}
+//20-11
+class School {
+    var name : String
+    init(name: String){
+        self.name = name
+    }
+}
+class MiddleSchool : School, Named {        //상속와 프로토콜의 채택이 동시에 이루어질 경우 상위클래스의 상속을 먼저 작성한다. 아니면 오류가 뱔섕햔댜.
+    required override init(name: String) {
+        super.init(name: name)
+    }
+}
