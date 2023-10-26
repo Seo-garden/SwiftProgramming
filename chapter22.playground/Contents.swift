@@ -68,4 +68,84 @@ extension Stack {
 print(doubleStack.topElement)
 print(stringStack.topElement)
 print(anyStack.topElement)
-
+//22-16
+protocol Container {
+    associatedtype ItemType
+    var count : Int {get}
+    mutating func append(_ item : ItemType)
+    subscript (i : Int) -> ItemType {get}
+}
+//22-17
+class MyContainer : Container {
+    var items: Array<Int> = Array<Int> ()
+    var count : Int {
+        return items.count
+    }
+    func append(_ item : Int) {
+        items.append(item)
+    }
+    
+    subscript(i: Int) -> Int {
+        return items[i]
+    }
+}
+//22-18
+struct IntStack : Container {
+    var items = [Int]()
+    mutating func push(_ item : Int) {
+        items.append(item)
+    }
+    mutating func pop() -> Int {
+        return items.removeLast()
+    }
+    mutating func append(_ item: Int) {
+        self.push(item)
+    }
+    var count: Int {
+        return items.count
+    }
+    subscript(i: Int) -> Int {
+        return items[i]
+    }
+}
+//22-19
+struct IntStack2 : Container {
+    typealias ItemType = Int
+    
+    var items = [ItemType]()
+    
+    mutating func push(_ item : ItemType){
+        items.append(item)
+    }
+    mutating func pop() -> ItemType {
+        return items.removeLast()
+    }
+    mutating func append(_ item: ItemType) {
+        self.push(item)
+    }
+    var count: Int {
+        return items.count
+    }
+    subscript(i: Int) -> Int {
+        return items[i]
+    }
+}
+//22-20
+struct Stack3<Element>: Container {
+    var items = [Element]()
+    mutating func push(_ item : Element){
+        return items.append(item)
+    }
+    mutating func pop() -> Element {
+        return items.removeLast()
+    }
+    mutating func append(_ item : Element){
+        self.push(item)
+    }
+    var count: Int {
+        return items.count
+    }
+    subscript(i: Int) -> Element {
+        return items[i]
+    }
+}
