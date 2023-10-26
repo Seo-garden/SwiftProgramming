@@ -44,4 +44,33 @@ print(sudden.gameInfo)
 
 let someGameType : Sports.GameType = .football
 let anotherGameType : ESports.GameType = .online
+//25-1
+let string : String = "ABC"
+
+switch string {
+case _: print(string)
+}
+let optionalString : String? = "ABC"
+
+switch optionalString {
+case "ABC"?: print(optionalString)
+case _?: print("Has Value, but not ABC")
+case nil: print("nil")
+}
+let yagom = ("yagom", 99, "Male")
+switch yagom {
+case("yagom", _, _):print("Hello yagom!!!")
+case(_,_,_):print("Who cares~")
+}
+for _ in 0..<2 {
+    print("Hello")
+}
+//25-3
+let yagom3 = ("yagom", 99, "male")
+switch yagom3 {
+case let(name, age, gender): print("Name : \(name) age : \(age) gender: \(gender)")
+}
+switch yagom3 {
+case (let name, _, let gender):print("Name : \(name), Gender: \(gender)")
+}
 
