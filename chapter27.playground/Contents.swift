@@ -1,35 +1,35 @@
 import UIKit
 
-//class Person {
-//    let name : String
-//    init(name: String) {
-//        self.name = name
-//    }
-//    deinit{
-//        print("\(name) is being deinitialized")
-//    }
-//}
-//var reference1: Person?
-//var reference2: Person?
-//var reference3: Person?
-//
-//reference1 = Person(name: "yagom")      //참조 1
-//reference2 = reference1                 //참조 2
-//reference3 = reference1                 //참조 3
-//
-//reference1 = nil                        //참조 횟수 2
-//reference2 = nil                        //참조 횟수 1
-//reference3 = nil                        //참조 횟수 0 -> 디이니셜라이저 호출
+class Person {
+    let name : String
+    init(name: String) {
+        self.name = name
+    }
+    deinit{
+        print("\(name) is being deinitialized")
+    }
+}
+var reference1: Person?
+var reference2: Person?
+var reference3: Person?
+
+reference1 = Person(name: "yagom")      //참조 1
+reference2 = reference1                 //참조 2
+reference3 = reference1                 //참조 3
+
+reference1 = nil                        //참조 횟수 2
+reference2 = nil                        //참조 횟수 1
+reference3 = nil                        //참조 횟수 0 -> 디이니셜라이저 호출
 //27-3
-//var globalReference : Person?
-//
-//func foo() {
-//    let yagom : Person = Person(name: "Yagom")      //참조 1
-//    
-//    globalReference = yagom                         //참조 2
-//    
-//}                                                   //함수가 종료되면서 참조 -1 되서 1 이지만 참조횟수가 남아있기 때문에 메모리에서 해제되지 않는다.
-//foo()
+var globalReference : Person?
+
+func foo() {
+    let yagom : Person = Person(name: "Yagom")      //참조 1
+    
+    globalReference = yagom                         //참조 2
+    
+}                                                   //함수가 종료되면서 참조 -1 되서 1 이지만 참조횟수가 남아있기 때문에 메모리에서 해제되지 않는다.
+foo()
 //27-7
 class Person {
     let name : String
@@ -118,3 +118,56 @@ class CEO {
 let company : Company = Company(name : "무한상사", ceoName: "김태호")
 company.introduce()
 company.ceo.introduce()
+//27-10
+class Person {
+    let name: String
+    let hobby: String?
+    
+    lazy var introduce: () -> String = {            //lazy 는 let 과 함께 선언할 수 없다.
+        var introduction: String = "My name is \(self.name)"
+        guard let hobby = self.hobby else {
+            return introduction
+        }
+        introduction += " "
+        introduction += "My hobby is \(hobby)"
+        
+        return introduction
+    }
+    init(name: String, hobby: String? = nil){
+        self.name = name
+        self.hobby = hobby
+    }
+    deinit {
+        print("\(name) is being deinitialized")
+    }
+}
+var yagom : Person? = Person(name: "yagom", hobby: "eating")
+print(yagom?.introduce())
+yagom = nil
+//27-11
+var a = 0
+var b = 0
+
+let closure = {
+    [a] in print(a ,b)
+    b = 20
+}
+a = 10
+b = 10
+closure()
+print(a,b)
+//27-12
+class SimpleClass1 {
+    var value : Int = 0
+}
+var x1 = SimpleClass1()
+var y1 = SimpleClass1()
+
+let closure1 = {
+    [x1] in print(x1.value, y1.value)
+}
+x1.value = 10
+y1.value = 10
+closure1()
+
+
